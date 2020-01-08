@@ -75,29 +75,33 @@ function clavier(e) {
         etat.focus();
         return;
     } else {
-        image.dataset.y=y;
-        image.dataset.x=x;
-        damier.rows[image.dataset.y].cells[image.dataset.x].appendChild(image);
-        image.alt="perso en " + image.dataset.x + " " + image.dataset.y;
-        etat.innerHTML="x=" + image.dataset.x + " y=" + image.dataset.y;
-        etat.focus();
+        deplacerPerso(x,y);        
     }
 
 
 }
 
+/**
+ * Déplace le perso en x,y et mets à jours la div etat
+ * @param {} x 
+ * @param {*} y 
+ */
+function deplacerPerso(x,y) {
+    image.dataset.y=y;
+    image.dataset.x=x;
+    damier.rows[image.dataset.y].cells[image.dataset.x].appendChild(image);
+    image.alt="perso en " + image.dataset.x + " " + image.dataset.y;
+    etat.innerHTML="x=" + image.dataset.x + " y=" + image.dataset.y;
+    etat.focus();
+}
 
 //Initialisation
 document.body.addEventListener("keydown",clavier);
-let damier=creerDamier(8,8,10);
+let damier=creerDamier(20,20,10);
 let image=creerImage("perso.png");
 let etat=document.getElementById("etat");
 
 //initialise le personnage dans le damier
-damier.rows[0].cells[0].appendChild(image);
 damier.rows[0].cells[0].dataset.type="vide";
-image.alt="perso en 0 0";
-image.dataset.x=0;
-image.dataset.y=0;
-etat.innerHTML="x=" + image.dataset.x + " y=" + image.dataset.y;
-etat.focus();
+deplacerPerso(0,0);
+
