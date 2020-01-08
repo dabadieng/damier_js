@@ -1,0 +1,4 @@
+Créer un autre personage "le loup" (un objet image) dont le comportement est automatique :
+- à chaque déplacement d'une case de votre presonne, le loup devra se déplacer d'une case dans votre direction.
+
+Créer plusieurs loups.
