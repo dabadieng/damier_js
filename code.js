@@ -51,8 +51,6 @@ function creerImage(imgurl) {
 function clavier(e) {
     let x = image.dataset.x;
     let y = image.dataset.y;
-    let a = imgLoup.dataset.a;
-    let z = imgLoup.dataset.z;
 
     if (e.key == "ArrowRight") {
         if (image.dataset.x < damier.rows[0].cells.length - 1) {
@@ -81,6 +79,11 @@ function clavier(e) {
         depLoup(x, y);
     }
 
+    if (image.dataset.x == imgLoup.dataset.a && image.dataset.y == imgLoup.dataset.z) {
+        let g = document.createElement("h1");
+        g.innerHTML = "PERDU";
+        jeu.appendChild(g);
+    }
 
 }
 
@@ -120,8 +123,8 @@ function deplacerPerso(x, y) {
 }
 /**
  * Déplace le loup en x et y 
- * @param {integer} x 
- * @param {integer} y 
+ * @param {integer} a
+ * @param {integer} z 
  */
 function deplacerLoup(a, z) {
     imgLoup.dataset.z = z;
@@ -134,18 +137,18 @@ function deplacerLoup(a, z) {
 
 //Initialisation
 document.body.addEventListener("keydown", clavier);
-document.body.addEventListener("keydown", deplacerLoup);
 let damier = creerDamier(8, 8, 10);
 let image = creerImage("perso.png");
 let imgLoup = creerImage("loup.png");
 let etatPerso = document.getElementById("etatPerso");
 let etatLoup = document.getElementById("etatLoup");
+let jeu = document.getElementById("jeu"); 
 
 //initialise le personnage dans le damier
-damier.rows[4].cells[0].dataset.type = "vide";
-deplacerPerso(0, 4);
+damier.rows[0].cells[0].dataset.type = "vide";
+deplacerPerso(0, 0);
 
 //initialiser le loup dans le damier 
-damier.rows[3].cells[3].dataset.type = "vide";
-deplacerLoup(3, 3);
+damier.rows[7].cells[7].dataset.type = "vide";
+deplacerLoup(7, 7);
 
