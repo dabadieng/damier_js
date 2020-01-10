@@ -148,7 +148,7 @@ document.body.addEventListener("keydown", clavier);
 let damier = creerDamier(8, 8, 10);
 let perso = creerImage("perso.png", "perso");
 let meute = [];
-for (let i = 0; i < 5; i++) {
+for (let i = 0; i < 1; i++) {   //gestion du nombre de loup
     meute.push(creerImage("loup.png", "loup " + i));
 }
 
